@@ -1,7 +1,6 @@
 https://codility.com/demo/results/trainingU88FVV-FZK/
-
-https://codility.com/demo/results/training6B9GME-3SU/
- -- dunno why but doesn't works as I expected
+https://codility.com/demo/results/trainingUUN62M-24S/
+ -- using utils for QuickSort and diff in order to avoid BigInt casting
 
 
 Determine whether a triangle can be built from a given set of edges.

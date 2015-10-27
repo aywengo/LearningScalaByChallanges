@@ -3,14 +3,13 @@ package Lesson_4.Triangle
 object Solution {
   def solution(A: Array[Int]): Int = {
     println(A.deep)
-    val B = A.filter(_ > 0).filter(_ < A.length).sorted.map(BigInt(_))
+    val B = A.filter(_ > 0).sorted.map(BigInt(_))
     println(B.deep)
 
-    var r = 0
     for(a <-2 until B.length) {
-      if (B(a) < B(a-1) + B(a-2)) r += 1
+      if (B(a) < B(a-1) + B(a-2)) return 1
     }
-    r
+    0
   }
 }
 
