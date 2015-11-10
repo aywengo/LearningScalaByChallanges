@@ -9,12 +9,12 @@ object Solution {
     println(H.deep)
     for (a <- H.indices) {
         cleanUpStack(stack, H(a))
-        println(stack)
 
-        if (stack.isEmpty || stack.top != H(a)) {
-          amount += 1
-          stack.push(H(a))
-        }
+      if (stack.isEmpty || stack.top != H(a)) {
+        amount += 1
+        stack.push(H(a))
+        println(stack)
+      }
     }
     amount
   }
