@@ -15,7 +15,7 @@ object Solution {
     println(A.deep)
 
     val B = A.sorted
-    B(B.length-3)*B(B.length-2)*B.last max B.head * B(1) * B.last
+    B(B.length - 3) * B(B.length - 2) * B.last max B.head * B(1) * B.last
   }
 }
 
@@ -25,6 +25,7 @@ class Lesson_4_Test extends FlatSpec {
       assert(Solution.solution(Sut) == Expected)
     }
   }
+
   check(Array(-3, 1, 2, -2, 5, 6), 60)
   check(Array(6, 7, 1, 2, 3, -2, 5, 4, -8), 210)
   check(Array(4, 5, 1, 0), 20)

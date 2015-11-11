@@ -23,11 +23,11 @@ object Solution {
     println(A.deep)
     println(perfSumArray.deep)
     println(findSliceMinVPosition(perfSumArray))
-    findMinSlice(A, perfSumArray, Min = perfSumArray(1).toDouble/2)
+    findMinSlice(A, perfSumArray, Min = perfSumArray(1).toDouble / 2)
   }
 
-  def findMinSlice(A:Array[Int], P:Array[Int], I:Int = 0, Min:Double = Double.MaxValue, MinIndex:Int = 0, K:Int = 2): Int = {
-    if(I + K > A.length) return MinIndex
+  def findMinSlice(A: Array[Int], P: Array[Int], I: Int = 0, Min: Double = Double.MaxValue, MinIndex: Int = 0, K: Int = 2): Int = {
+    if (I + K > A.length) return MinIndex
 
     var k = K
     var i = I
@@ -40,7 +40,7 @@ object Solution {
     var pref = 0
     if (I > 0) pref = P(I - 1)
 
-    val minimum = (P(I+K-1) - pref).toDouble/K
+    val minimum = (P(I + K - 1) - pref).toDouble / K
 
     if (minimum < Min) {
       min = minimum
@@ -50,38 +50,38 @@ object Solution {
     findMinSlice(A, P, i, min, minIndex, k)
   }
 
-  def prefSum(A: Array[Int], P: Array[Int], I:Int = 1): Array[Int] = {
+  def prefSum(A: Array[Int], P: Array[Int], I: Int = 1): Array[Int] = {
     if (I >= A.length) return P
-    P(I) = P(I-1) + A(I)
-    prefSum(A, P, I+1)
+    P(I) = P(I - 1) + A(I)
+    prefSum(A, P, I + 1)
   }
 
-  def modSum(A: Array[Int], P: Array[Int], D: Array[Double], I:Int = 1, Index:Int = 0): Int = {
+  def modSum(A: Array[Int], P: Array[Int], D: Array[Double], I: Int = 1, Index: Int = 0): Int = {
     if (I >= A.length) {
       println(D.deep)
       return Index
     }
-    D(I) = abs(A(I).toDouble/P(I-1))
+    D(I) = abs(A(I).toDouble / P(I - 1))
     var i = Index
     if (D(I) < D(Index)) i = I
-    modSum(A, P, D, I+1, i)
+    modSum(A, P, D, I + 1, i)
   }
 
-  def findSliceMinVPosition(P: Array[Int], I:Int = 0, E:Int = 1, MP:Int = 0, M:Double = Double.MaxValue): Int = {
+  def findSliceMinVPosition(P: Array[Int], I: Int = 0, E: Int = 1, MP: Int = 0, M: Double = Double.MaxValue): Int = {
     if (I >= P.length - 1) return MP
-    if (E >= P.length) return findSliceMinVPosition(P, I+1, I+2, MP, M)
+    if (E >= P.length) return findSliceMinVPosition(P, I + 1, I + 2, MP, M)
 
     var pref = 0
     var minimum = M
     var minSliceStart = MP
     if (I > 0) pref = P(I - 1)
-    val min = (P(E) - pref).toDouble/(E-I+1)
+    val min = (P(E) - pref).toDouble / (E - I + 1)
 
-    if ( min < M ) {
+    if (min < M) {
       minimum = min
       minSliceStart = I
     }
-    findSliceMinVPosition(P, I, E+1, minSliceStart, minimum)
+    findSliceMinVPosition(P, I, E + 1, minSliceStart, minimum)
   }
 
 }
@@ -92,9 +92,10 @@ class Lesson_3_Test extends FlatSpec {
       assert(Solution.solution(Sut) == Expected)
     }
   }
-  check(Array(4, 2,  2,  5,  1,  5, 8), 1)
+
+  check(Array(4, 2, 2, 5, 1, 5, 8), 1)
   check(Array(5, 6, 3, 4, 9), 2)
   check(Array(-3, -5, -8, -4, -10), 2)
   check(Array(2, 3, 1, 5), 0)
-  check(Array(12,  13, 10,  3, 2, 3, 1, 4, 2), 4)
+  check(Array(12, 13, 10, 3, 2, 3, 1, 4, 2), 4)
 }

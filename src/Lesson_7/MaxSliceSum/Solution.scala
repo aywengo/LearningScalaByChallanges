@@ -16,14 +16,14 @@ object Solution {
   }
 
   def golden_max_slice(A: Array[Int]): Int = {
-    var maxEnding,maxSlice,minItem = 0
+    var maxEnding, maxSlice, minItem = 0
     val maxItem = A.max
     if (maxItem < 0) {
       minItem = A.min
       maxEnding = minItem
       maxSlice = minItem
     }
-    for(a <- A) {
+    for (a <- A) {
       maxEnding = minItem max maxEnding + a
       maxSlice = maxSlice max maxEnding
     }
@@ -40,7 +40,7 @@ class Lesson_7_Test extends FlatSpec {
 
   check(Array(-2, 1, 1), 2)
   check(Array(3, 2, -6, 4, 0), 5)
-  check(Array(3, 2, -6, 3, 1),  5)
+  check(Array(3, 2, -6, 3, 1), 5)
   check(Array(-10), -10)
   check(Array(-2, 1), 1)
   check(Array(-2, 3), 3)

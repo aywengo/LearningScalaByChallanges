@@ -17,7 +17,7 @@ object Solution {
   }
 
   def goldenLeader(A: Array[Int]): Int = {
-    var size,value, count, leader = 0
+    var size, value, count, leader = 0
     for (k <- A.indices) {
       if (size == 0) {
         size += 1
@@ -36,7 +36,7 @@ object Solution {
       if (A(k) == candidate) count += 1
     }
 
-    if(count > A.length/2) leader = candidate
+    if (count > A.length / 2) leader = candidate
 
     leader
   }

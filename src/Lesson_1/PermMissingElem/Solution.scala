@@ -13,13 +13,8 @@ import org.scalatest.FlatSpec
 object Solution {
   def solution(A: Array[Int]): Int = {
     val length = A.length
-    val fact = ((length.toLong + 2) * (length + 1))/2
-
-    val t0 = System.nanoTime()
-    val result = (fact - A.sum).toInt
-    val t1 = System.nanoTime()
-    println("Elapsed time: " + (t1 - t0) + "ns")
-    result
+    val fact = ((length.toLong + 2) * (length + 1)) / 2
+    (fact - A.sum).toInt
   }
 
 }
@@ -30,5 +25,6 @@ class Lesson_1_Test extends FlatSpec {
       assert(Solution.solution(Sut) == Expected)
     }
   }
-  check(Array(2,3,1,5), 4)
+
+  check(Array(2, 3, 1, 5), 4)
 }

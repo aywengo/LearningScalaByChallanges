@@ -15,10 +15,10 @@ import scala.collection.mutable
 object Solution {
   def solution(H: Array[Int]): Int = {
     var amount = 0
-    val stack  = mutable.Stack[Int]()
+    val stack = mutable.Stack[Int]()
     println(H.deep)
     for (a <- H.indices) {
-        cleanUpStack(stack, H(a))
+      cleanUpStack(stack, H(a))
 
       if (stack.isEmpty || stack.top != H(a)) {
         amount += 1
@@ -29,13 +29,13 @@ object Solution {
     amount
   }
 
-  def cleanUpStack(S:mutable.Stack[Int], H:Int): Unit = {
+  def cleanUpStack(S: mutable.Stack[Int], H: Int): Unit = {
     while (S.nonEmpty && S.top > H) S.pop()
   }
 }
 
-class Lesson_5_Test extends FlatSpec{
+class Lesson_5_Test extends FlatSpec {
   s"StoneWall" should s"return expected value" in {
-    assert(Solution.solution(Array(8,8,5,7,9,8,7,4,8)) == 7, println(s"${Array(8,8,5,7,9,8,7,4,8).deep} should return 7"))
+    assert(Solution.solution(Array(8, 8, 5, 7, 9, 8, 7, 4, 8)) == 7, println(s"${Array(8, 8, 5, 7, 9, 8, 7, 4, 8).deep} should return 7"))
   }
 }

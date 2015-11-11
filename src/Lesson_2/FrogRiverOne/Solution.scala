@@ -21,16 +21,16 @@ object Solution {
     result
   }
 
-  def jump(A: Array[Int], River:Array[Boolean], Sum: Int, Fact: Int, Moment:Int = 0):Int ={
+  def jump(A: Array[Int], River: Array[Boolean], Sum: Int, Fact: Int, Moment: Int = 0): Int = {
     if (Moment >= A.length) return -1
 
     val nextJump = leaveFailCheck(A(Moment), River, Sum)
-    if (nextJump == Fact ) return Moment
+    if (nextJump == Fact) return Moment
 
-    jump(A,River,nextJump,Fact, Moment + 1)
+    jump(A, River, nextJump, Fact, Moment + 1)
   }
 
-  def leaveFailCheck(Leave: Int, River:Array[Boolean], Sum: Int): Int = {
+  def leaveFailCheck(Leave: Int, River: Array[Boolean], Sum: Int): Int = {
     if (Leave >= River.length || River(Leave)) return Sum
 
     River(Leave) = true
@@ -44,10 +44,11 @@ object Solution {
 }
 
 class Lesson_2_Test extends FlatSpec {
-  def check(A:Int, Sut: Array[Int], Expected: Int) = {
+  def check(A: Int, Sut: Array[Int], Expected: Int) = {
     s"MissingInteger_${Sut.deep} with $A" should s"return expected value $Expected" in {
       assert(Solution.solution(A, Sut) === Expected)
     }
   }
-  check(5, Array(1,3,1,4,2,3,5,4), 6)
+
+  check(5, Array(1, 3, 1, 4, 2, 3, 5, 4), 6)
 }

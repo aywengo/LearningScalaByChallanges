@@ -24,6 +24,7 @@ class Lesson_4_Test extends FlatSpec {
       assert(Solution.solution(Sut) == Expected)
     }
   }
+
   check(Array(-5, 5, -5, 4), 3)
   check(Array(0, 1, 2), 3)
   check(Array(), 0)

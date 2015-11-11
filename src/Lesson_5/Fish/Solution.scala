@@ -51,9 +51,10 @@ object Solution {
 class Lesson_5_Test extends FlatSpec {
   def check(A: Array[Int], B: Array[Int], Expected: Int) = {
     s"Fish_${A.deep} and ${B.deep}" should s"return expected value $Expected " in {
-      assert(Solution.solution(A,B) == Expected)
+      assert(Solution.solution(A, B) == Expected)
     }
   }
+
   check(Array(6, 3, 1, 2, 4, 5), Array(1, 1, 1, 0, 0, 0), 1)
   check(Array(6, 3, 1, 2, 4, 5, 7, 8), Array(1, 1, 1, 0, 0, 0, 1, 1), 3)
   check(Array(7, 6, 3, 1, 2, 4, 5), Array(0, 1, 1, 1, 0, 0, 0), 2)

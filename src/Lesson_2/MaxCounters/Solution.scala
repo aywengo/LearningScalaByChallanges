@@ -16,17 +16,17 @@ object Solution {
     incByIndex(A, Array.ofDim[Int](N), N)
   }
 
-  def incByIndex(A:Array[Int], R:Array[Int], N:Int, I:Int = 0, M:Int = 0, B:Int = 0): Array[Int] = {
-    if(I >= A.length) {
-      for(a <- R.indices) {
-          if (R(a) < B)
-            R(a) = B
-        }
+  def incByIndex(A: Array[Int], R: Array[Int], N: Int, I: Int = 0, M: Int = 0, B: Int = 0): Array[Int] = {
+    if (I >= A.length) {
+      for (a <- R.indices) {
+        if (R(a) < B)
+          R(a) = B
+      }
       return R
     }
 
     if (A(I) >= N + 1) {
-      incByIndex(A, R, N, I+1, M, M)
+      incByIndex(A, R, N, I + 1, M, M)
     }
     else {
       if (R(A(I) - 1) < B) {
@@ -39,17 +39,18 @@ object Solution {
       val r = R(A(I) - 1)
       var max = M
       if (r > M) max = r
-      incByIndex(A, R, N, I+1, max, B)
+      incByIndex(A, R, N, I + 1, max, B)
     }
   }
 }
 
 class Lesson_2_Test extends FlatSpec {
-  def check(A:Int, Sut: Array[Int], Expected: Array[Int]) = {
+  def check(A: Int, Sut: Array[Int], Expected: Array[Int]) = {
     s"MaxCounters_${Sut.deep} with $A" should s"return expected value ${Expected.deep}" in {
       assert(Solution.solution(A, Sut) === Expected)
     }
   }
+
   check(1, Array(1), Array(1))
-  check(4, Array(2,3,2,1,5,1), Array(3, 2, 2, 2))
+  check(4, Array(2, 3, 2, 1, 5, 1), Array(3, 2, 2, 2))
 }

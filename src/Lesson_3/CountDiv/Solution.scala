@@ -18,21 +18,22 @@ object Solution {
     }
     if (K > B) return 0
     if (K == 1) return B - A + 1
-    ((B - firstDivItem(A,K)) / K) + 1
+    ((B - firstDivItem(A, K)) / K) + 1
   }
 
   def firstDivItem(A: Int, K: Int): Int = {
     if (A % K == 0) return A
-    firstDivItem(A +1, K)
+    firstDivItem(A + 1, K)
   }
 }
 
 class Lesson_3_Test extends FlatSpec {
-  def check(A: Int, B: Int, K: Int,  Expected: Int) = {
+  def check(A: Int, B: Int, K: Int, Expected: Int) = {
     s"CountDiv_$A with $B and $K" should s"return expected value $Expected " in {
       assert(Solution.solution(A, B, K) === Expected)
     }
   }
+
   check(5, 11, 2, 3)
   check(6, 12, 2, 4)
   check(0, 0, 11, 1)

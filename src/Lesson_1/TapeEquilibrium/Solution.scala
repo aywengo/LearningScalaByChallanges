@@ -8,20 +8,16 @@
 
 package Lesson_1.TapeEquilibrium
 
-import Math.abs
+import java.lang.Math.abs
 
 import org.scalatest.FlatSpec
 
 object Solution {
   def solution(A: Array[Int]): Int = {
-    val t0 = System.nanoTime()
-    val result = diffTapes(A, A.sum - A(0), Int.MaxValue, 1, A(0))
-    val t1 = System.nanoTime()
-    println("Elapsed time: " + (t1 - t0) + "ns")
-    result
+    diffTapes(A, A.sum - A(0), Int.MaxValue, 1, A(0))
   }
 
-  def diffTapes(A:Array[Int], S:Int, M:Int, I:Int = 1, T:Int = 0): Int ={
+  def diffTapes(A: Array[Int], S: Int, M: Int, I: Int = 1, T: Int = 0): Int = {
     if (I >= A.length) return M
 
     diffTapes(A, S - A(I), abs(T - S) min M, I + 1, T + A(I))

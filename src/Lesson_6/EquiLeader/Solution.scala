@@ -15,20 +15,20 @@ object Solution {
     val leader = goldenLeader(A)
 
     val count = A.count(a => a == leader)
-    if (count <= A.length/2) return 0
+    if (count <= A.length / 2) return 0
 
     var equiLeaderCount, leadersCount = 0
-    for(i <- A.indices) {
+    for (i <- A.indices) {
       if (A(i) == leader) leadersCount += 1
 
-      if ((leadersCount > (i+1)/2) && ((count - leadersCount) > ((A.length - i - 1)/2))) equiLeaderCount += 1
+      if ((leadersCount > (i + 1) / 2) && ((count - leadersCount) > ((A.length - i - 1) / 2))) equiLeaderCount += 1
     }
 
     equiLeaderCount
   }
 
   def goldenLeader(A: Array[Int]): Int = {
-    var size,value, count, leader = 0
+    var size, value, count, leader = 0
     for (k <- A.indices) {
       if (size == 0) {
         size += 1
@@ -47,7 +47,7 @@ object Solution {
       if (A(k) == candidate) count += 1
     }
 
-    if(count > A.length/2) leader = candidate
+    if (count > A.length / 2) leader = candidate
 
     leader
   }

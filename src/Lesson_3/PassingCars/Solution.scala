@@ -14,7 +14,7 @@ object Solution {
     sumUp(A, p, 0)
   }
 
-  def sumUp(A: Array[Int], P: Array[Int], T: Int, I:Int = 0, S:Int = 0): Int = {
+  def sumUp(A: Array[Int], P: Array[Int], T: Int, I: Int = 0, S: Int = 0): Int = {
     if (I >= A.length) return S
     var sum = S
     if (A(I) == T) sum = S + P(I)
@@ -22,7 +22,7 @@ object Solution {
     sumUp(A, P, T, I + 1, sum)
   }
 
-  def countPostFixSumVector(A: Array[Int], P: Array[Int], I:Int, S:Int = 0): Array[Int] =        {
+  def countPostFixSumVector(A: Array[Int], P: Array[Int], I: Int, S: Int = 0): Array[Int] = {
     if (I < 0) return P
     val s = S + A(I)
     P(I) = s

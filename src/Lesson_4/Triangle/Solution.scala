@@ -18,8 +18,8 @@ object Solution {
     val B = A.filter(_ > 0).sorted.map(BigInt(_))
     println(B.deep)
 
-    for(a <-2 until B.length) {
-      if (B(a) < B(a-1) + B(a-2)) return 1
+    for (a <- 2 until B.length) {
+      if (B(a) < B(a - 1) + B(a - 2)) return 1
     }
     0
   }
@@ -31,6 +31,7 @@ class Lesson_4_Test extends FlatSpec {
       assert(Solution.solution(Sut) == Expected)
     }
   }
+
   check(Array(10, 2, 5, 1, 8, 20), 1)
   check(Array(-10, 2, 5, -1, 8, 20), 0)
   check(Array(0, 1, 2), 0)

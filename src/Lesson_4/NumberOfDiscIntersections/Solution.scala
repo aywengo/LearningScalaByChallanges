@@ -20,7 +20,7 @@ object Solution {
         upLimits(A.length - 1) += 1
       } else {
         if (A(a) + a >= A.length) {
-          upLimits(A.length-1) += 1
+          upLimits(A.length - 1) += 1
         } else {
           upLimits(a + A(a)) += 1
         }
@@ -35,12 +35,12 @@ object Solution {
     println(upLimits.deep)
     var result, inRange = 0
 
-    for(i <-  downLimits.indices) {
+    for (i <- downLimits.indices) {
       inRange += downLimits(i)
 
       if (inRange > 0 && upLimits(i) != 0) {
         result += sumIntersects(upLimits, inRange, i)
-        if (result > maxIterations){
+        if (result > maxIterations) {
           return -1
         }
         inRange -= upLimits(i)
@@ -50,8 +50,8 @@ object Solution {
     result
   }
 
-  def sumIntersects(UpLimits:Array[Int], InRange:Int, id:Int) : Int = {
-    UpLimits(id) *  (2* InRange - 1 - UpLimits(id)) / 2
+  def sumIntersects(UpLimits: Array[Int], InRange: Int, id: Int): Int = {
+    UpLimits(id) * (2 * InRange - 1 - UpLimits(id)) / 2
   }
 }
 
@@ -61,5 +61,6 @@ class Lesson_4_Test extends FlatSpec {
       assert(Solution.solution(Sut) == Expected)
     }
   }
+
   check(Array(1, 5, 2, 1, 4, 0), 11)
 }

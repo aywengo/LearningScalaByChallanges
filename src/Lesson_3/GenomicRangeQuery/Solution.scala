@@ -8,9 +8,9 @@
 
 package Lesson_3.GenomicRangeQuery
 
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.{FlatSpec, Matchers}
 
-import util.control.Breaks._
+import scala.util.control.Breaks._
 
 object Solution {
   def solution(S: String, P: Array[Int], Q: Array[Int]): Array[Int] = {
@@ -21,18 +21,17 @@ object Solution {
 
     val result = Array.ofDim[Int](P.length)
     for (c <- P.indices) {
-      result(c) = query(m, P(c),Q(c))
+      result(c) = query(m, P(c), Q(c))
     }
     result
   }
 
-  def query(A: Array[Array[Int]], F:Int, T:Int) : Int = {
-    for (c <-1 until 4) {
+  def query(A: Array[Array[Int]], F: Int, T: Int): Int = {
+    for (c <- 1 until 4) {
       breakable {
-      for (d <- A(c - 1).indices)
-        {
-          if (A(c-1)(d) < 0 ) break
-          else if (A(c-1)(d) <= T && A(c-1)(d) >= F) return c
+        for (d <- A(c - 1).indices) {
+          if (A(c - 1)(d) < 0) break
+          else if (A(c - 1)(d) <= T && A(c - 1)(d) >= F) return c
         }
       }
     }
@@ -40,13 +39,13 @@ object Solution {
   }
 
   def aggregate(S: String): Array[Array[Int]] = {
-    val result = Array.fill(3,S.length)(-1)
+    val result = Array.fill(3, S.length)(-1)
     val pointers = Array.ofDim[Int](3)
     for (c <- 0 until S.length) {
       val x = getGenom(S, c)
       if (x < 4) {
-        result(x-1)(pointers(x-1)) = c
-        pointers(x-1) += 1
+        result(x - 1)(pointers(x - 1)) = c
+        pointers(x - 1) += 1
       }
     }
     result
@@ -62,13 +61,14 @@ object Solution {
   }
 }
 
-class Lesson_3_Test extends FlatSpec with Matchers{
-  def check(Sut: String, P: Array[Int], Q: Array[Int],  Expected: Array[Int]) = {
+class Lesson_3_Test extends FlatSpec with Matchers {
+  def check(Sut: String, P: Array[Int], Q: Array[Int], Expected: Array[Int]) = {
     s"GenomicRangeQuery_$Sut with ${P.deep} and ${Q.deep}" should s"return expected value ${Expected.deep} " in {
       assert(Solution.solution(Sut, P, Q) === Expected)
     }
   }
-  check("CAGCCTA", List(2, 5, 0).toArray, List(4, 5, 6).toArray, List(2, 4, 1).toArray)
-  check("TC", List(0, 0, 1).toArray, List(0, 1, 1).toArray, List(4, 2, 2).toArray)
-  check("G", List(0).toArray, List(0).toArray, List(3).toArray)
+
+  check("CAGCCTA", Array(2, 5, 0), Array(4, 5, 6), Array(2, 4, 1))
+  check("TC", Array(0, 0, 1), Array(0, 1, 1), Array(4, 2, 2))
+  check("G", Array(0), Array(0), Array(3))
 }
