@@ -1,4 +1,14 @@
+// The statement is copyrighted by Codility inc
+//
+// Materials for the lesson:
+// https://codility.com/media/train/6-Leader.pdf
+//
+// Results might be found under link:
+// https://codility.com/demo/results/trainingGDWMAE-URH/
+
 package Lesson_6.EquiLeader
+
+import org.scalatest.FlatSpec
 
 object Solution {
   def solution(A: Array[Int]): Int = {
@@ -43,6 +53,8 @@ object Solution {
   }
 }
 
-object Test extends App {
-  println(Solution.solution(Array(4, 3, 4, 4, 4, 2))) // exp 2
+class Lesson_6_Test extends FlatSpec {
+  s"EquiLeader" should s"return expected value" in {
+    assert(Solution.solution(Array(4, 3, 4, 4, 4, 2)) == 2, println(s"${Array(4, 3, 4, 4, 4, 2).deep} should return 2"))
+  }
 }

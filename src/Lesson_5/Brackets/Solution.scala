@@ -1,4 +1,14 @@
+// The statement is copyrighted by Codility inc
+//
+// Materials for the lesson:
+// https://codility.com/media/train/5-Stacks.pdf
+//
+// Results might be found under link:
+// https://codility.com/demo/results/trainingT9U6EU-TFW/
+
 package Lesson_5.Brackets
+
+import org.scalatest.FlatSpec
 
 import scala.collection.mutable
 
@@ -38,9 +48,14 @@ object Solution {
   }
 }
 
+class Lesson_5_Test extends FlatSpec {
+  def check(Sut: String, Expected: Int) = {
+    s"Brackets_$Sut" should s"return expected value $Expected " in {
+      assert(Solution.solution(Sut) == Expected, println(s"$Sut should return $Expected"))
+    }
+  }
 
-object Test extends App {
-  println(Solution.solution("{[()()]}")) // exp 1
-  println(Solution.solution("([)()]")) // exp 0
-  println(Solution.solution("[)()]")) // exp 0
+  check("{[()()]}", 1)
+  check("([)()]", 0)
+  check("[)()]", 0)
 }

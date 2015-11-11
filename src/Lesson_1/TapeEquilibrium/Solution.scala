@@ -1,6 +1,16 @@
+// The statement is copyrighted by Codility inc
+//
+// Materials for the lesson:
+// https://codility.com/media/train/1-TimeComplexity.pdf
+//
+// Results might be found under the link:
+// https://codility.com/demo/results/trainingN9KYND-Y54/
+
 package Lesson_1.TapeEquilibrium
 
 import Math.abs
+
+import org.scalatest.FlatSpec
 
 object Solution {
   def solution(A: Array[Int]): Int = {
@@ -19,17 +29,15 @@ object Solution {
 
 }
 
-object Test extends App {
-  var nums = List(3, 1, 2, 4, 3)
-  println(Solution.solution(nums.toArray))
+class Lesson_1_Test extends FlatSpec {
+  def check(Sut: Array[Int], Expected: Int) = {
+    s"TapeEquilibrium_${Sut.deep}" should s"return expected value $Expected " in {
+      assert(Solution.solution(Sut) == Expected)
+    }
+  }
 
-  nums = List(10, 40, 25, 70)
-  println(Solution.solution(nums.toArray))
-
-  nums = List(3, -3)
-  println(Solution.solution(nums.toArray))
-
-
-  nums = List(2, 2)
-  println(Solution.solution(nums.toArray))
+  check(Array(3, 1, 2, 4, 3), 1)
+  check(Array(10, 40, 25, 70), 5)
+  check(Array(3, -3), 6)
+  check(Array(2, 2), 0)
 }

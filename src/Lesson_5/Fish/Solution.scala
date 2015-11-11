@@ -1,4 +1,14 @@
+// The statement is copyrighted by Codility inc
+//
+// Materials for the lesson:
+// https://codility.com/media/train/5-Stacks.pdf
+//
+// Results might be found under link:
+// https://codility.com/demo/results/trainingJMBDMG-RBX/
+
 package Lesson_5.Fish
+
+import org.scalatest.FlatSpec
 
 import scala.collection.mutable
 
@@ -38,12 +48,17 @@ object Solution {
   }
 }
 
-object Test extends App {
-  println(Solution.solution(Array(6, 3, 1, 2, 4, 5), Array(1, 1, 1, 0, 0, 0))) // exp 1
-  println(Solution.solution(Array(6, 3, 1, 2, 4, 5, 7, 8), Array(1, 1, 1, 0, 0, 0, 1, 1))) // exp 3
-  println(Solution.solution(Array(7, 6, 3, 1, 2, 4, 5), Array(0, 1, 1, 1, 0, 0, 0))) // exp 2
-  println(Solution.solution(Array(4, 3, 2, 1, 5), Array(0, 1, 0, 0, 0))) // exp 2
-  println(Solution.solution(Array(1, 3, 4, 5, 2), Array(0, 1, 0, 0, 1))) // exp 4
-  println(Solution.solution(Array(1, 3, 4, 5, 2, 6), Array(0, 0, 1, 1, 0, 1))) // exp 5
-  println(Solution.solution(Array(2, 1, 5, 3, 4), Array(0, 1, 1, 1, 0))) // exp 3
+class Lesson_5_Test extends FlatSpec {
+  def check(A: Array[Int], B: Array[Int], Expected: Int) = {
+    s"Fish_${A.deep} and ${B.deep}" should s"return expected value $Expected " in {
+      assert(Solution.solution(A,B) == Expected)
+    }
+  }
+  check(Array(6, 3, 1, 2, 4, 5), Array(1, 1, 1, 0, 0, 0), 1)
+  check(Array(6, 3, 1, 2, 4, 5, 7, 8), Array(1, 1, 1, 0, 0, 0, 1, 1), 3)
+  check(Array(7, 6, 3, 1, 2, 4, 5), Array(0, 1, 1, 1, 0, 0, 0), 2)
+  check(Array(4, 3, 2, 1, 5), Array(0, 1, 0, 0, 0), 2)
+  check(Array(1, 3, 4, 5, 2), Array(0, 1, 0, 0, 1), 4)
+  check(Array(1, 3, 4, 5, 2, 6), Array(0, 0, 1, 1, 0, 1), 5)
+  check(Array(2, 1, 5, 3, 4), Array(0, 1, 1, 1, 0), 3)
 }

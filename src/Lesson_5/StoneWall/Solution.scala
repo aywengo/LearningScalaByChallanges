@@ -1,4 +1,14 @@
+// The statement is copyrighted by Codility inc
+//
+// Materials for the lesson:
+// https://codility.com/media/train/5-Stacks.pdf
+//
+// Results might be found under link:
+// https://codility.com/demo/results/trainingH4AWBK-7Z5/
+
 package Lesson_5.StoneWall
+
+import org.scalatest.FlatSpec
 
 import scala.collection.mutable
 
@@ -24,7 +34,8 @@ object Solution {
   }
 }
 
-
-object Test extends App {
-  println(Solution.solution(Array(8,8,5,7,9,8,7,4,8))) // exp 7
+class Lesson_5_Test extends FlatSpec{
+  s"StoneWall" should s"return expected value" in {
+    assert(Solution.solution(Array(8,8,5,7,9,8,7,4,8)) == 7, println(s"${Array(8,8,5,7,9,8,7,4,8).deep} should return 7"))
+  }
 }

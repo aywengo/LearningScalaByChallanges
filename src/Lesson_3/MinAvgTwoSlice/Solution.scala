@@ -1,4 +1,14 @@
+// The statement is copyrighted by Codility inc
+//
+// Materials for the lesson:
+// https://codility.com/media/train/3-PrefixSums.pdf
+//
+// Results might be found under the link:
+// https://codility.com/demo/results/training46QJBJ-AR3/
+
 package Lesson_3.MinAvgTwoSlice
+
+import org.scalatest.FlatSpec
 
 import scala.math.abs
 
@@ -9,11 +19,9 @@ object Solution {
     perfSumArray(0) = A(0)
     pSumArray(0) = 0
     perfSumArray = prefSum(A, perfSumArray)
-//    val minIndex = modSum(A, perfSumArray, pSumArray)
 
     println(A.deep)
     println(perfSumArray.deep)
-//    println(minIndex)
     println(findSliceMinVPosition(perfSumArray))
     findMinSlice(A, perfSumArray, Min = perfSumArray(1).toDouble/2)
   }
@@ -78,10 +86,15 @@ object Solution {
 
 }
 
-object Test extends App {
-//  println(Solution.solution(Array(4, 2,  2,  5,  1,  5, 8))) // exp. 1
-//  println(Solution.solution(Array(5, 6, 3, 4, 9))) // exp 2
-  println(Solution.solution(Array(-3, -5, -8, -4, -10))) // exp 2
-  println(Solution.solution(Array(2, 3, 1, 5))) // exp 0
-  println(Solution.solution(Array(12,  13, 10,  3, 2, 3, 1, 4, 2))) // exp 4
+class Lesson_3_Test extends FlatSpec {
+  def check(Sut: Array[Int], Expected: Int) = {
+    s"MinAvgTwoSlice_${Sut.deep}" should s"return expected value $Expected " in {
+      assert(Solution.solution(Sut) == Expected)
+    }
+  }
+  check(Array(4, 2,  2,  5,  1,  5, 8), 1)
+  check(Array(5, 6, 3, 4, 9), 2)
+  check(Array(-3, -5, -8, -4, -10), 2)
+  check(Array(2, 3, 1, 5), 0)
+  check(Array(12,  13, 10,  3, 2, 3, 1, 4, 2), 4)
 }

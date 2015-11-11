@@ -1,4 +1,14 @@
+// The statement is copyrighted by Codility inc
+//
+// Materials for the lesson:
+// https://codility.com/media/train/5-Stacks.pdf
+//
+// Results might be found under link:
+// https://codility.com/demo/results/trainingT3X3RW-ETT/
+
 package Lesson_5.Nesting
+
+import org.scalatest.FlatSpec
 
 import scala.collection.mutable
 
@@ -21,9 +31,14 @@ object Solution {
 }
 
 
-object Test extends App {
-  println(Solution.solution("(()(())())")) // exp 1
-  println(Solution.solution("(()")) // exp 0
-  println(Solution.solution("())")) // exp 0
+class Lesson_5_Test extends FlatSpec {
+  def check(Sut: String, Expected: Int) = {
+    s"Nesting_$Sut" should s"return expected value $Expected " in {
+      assert(Solution.solution(Sut) == Expected, println(s"$Sut should return $Expected"))
+    }
+  }
 
+  check("(()(())())", 1)
+  check("(()", 0)
+  check("())", 0)
 }

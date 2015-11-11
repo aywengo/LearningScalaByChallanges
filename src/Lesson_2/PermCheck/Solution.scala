@@ -1,4 +1,14 @@
+// The statement is copyrighted by Codility inc
+//
+// Materials for the lesson:
+// https://codility.com/media/train/2-CountingElements.pdf
+//
+// Results might be found under the link:
+// https://codility.com/demo/results/trainingT7RRY2-5YR/
+
 package Lesson_2.PermCheck
+
+import org.scalatest.FlatSpec
 
 object Solution {
   def solution(A: Array[Int]): Int = {
@@ -30,9 +40,14 @@ object Solution {
 
 }
 
-object Test extends App {
-  println(Solution.solution(Array(1,3,4,2,5)))
-  println(Solution.solution(Array(1,4,2,5)))
-  println(Solution.solution(Array(9, 5, 7, 3, 2, 7, 3, 1, 10, 8)))
-  println(Solution.solution(Array(1,4,1)))
+class Lesson_2_Test extends FlatSpec {
+  def check(Sut: Array[Int], Expected: Int) = {
+    s"PermCheck_${Sut.deep}" should s"return expected value $Expected " in {
+      assert(Solution.solution(Sut) == Expected)
+    }
+  }
+  check(Array(1,3,4,2,5), 1)
+  check(Array(1,4,2,5), 0)
+  check(Array(9, 5, 7, 3, 2, 7, 3, 1, 10, 8), 0)
+  check(Array(1,4,1), 0)
 }

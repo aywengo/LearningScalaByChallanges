@@ -1,4 +1,15 @@
+// The statement is copyrighted by Codility inc
+//
+// Materials for the lesson:
+// https://codility.com/media/train/6-Leader.pdf
+//
+// Results might be found under link:
+// https://codility.com/demo/results/trainingB5J2KF-M86/
+
+
 package Lesson_6.Dominator
+
+import org.scalatest.FlatSpec
 
 object Solution {
   def solution(A: Array[Int]): Int = {
@@ -31,6 +42,8 @@ object Solution {
   }
 }
 
-object Test extends App {
-  println(Solution.solution(Array(3, 4, 3, 2, 3, -1, 3, 3))) // exp 3
+class Lesson_6_Test extends FlatSpec {
+  s"Dominator" should s"return expected value" in {
+    assert(Solution.solution(Array(3, 4, 3, 2, 3, -1, 3, 3)) == 0, println(s"${Array(3, 4, 3, 2, 3, -1, 3, 3).deep} should return 0"))
+  }
 }

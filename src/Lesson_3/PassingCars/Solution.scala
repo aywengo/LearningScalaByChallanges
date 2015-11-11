@@ -1,3 +1,11 @@
+// The statement is copyrighted by Codility inc
+//
+// Materials for the lesson:
+// https://codility.com/media/train/3-PrefixSums.pdf
+//
+// Results might be found under the link:
+// https://codility.com/demo/results/trainingZTN5BA-CZH/
+
 package Lesson_3.PassingCars
 
 object Solution {

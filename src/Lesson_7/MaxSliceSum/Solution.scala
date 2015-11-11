@@ -1,8 +1,17 @@
+// The statement is copyrighted by Codility inc
+//
+// Materials for the lesson:
+// https://codility.com/media/train/7-MaxSlice.pdf
+//
+// Results might be found under link:
+// https://codility.com/demo/results/trainingPMWKGJ-WED/
+
 package Lesson_7.MaxSliceSum
+
+import org.scalatest._
 
 object Solution {
   def solution(A: Array[Int]): Int = {
-    if (A.length == 1) return A(0)
     golden_max_slice(A)
   }
 
@@ -18,17 +27,22 @@ object Solution {
       maxEnding = minItem max maxEnding + a
       maxSlice = maxSlice max maxEnding
     }
-    println(maxSlice max maxItem)
     maxSlice max maxItem
   }
 }
 
-object Test extends App {
-  assert(Solution.solution(Array(-2, 1, 1)) == 2)
-  assert(Solution.solution(Array(3, 2, -6, 4, 0)) == 5)
-  assert(Solution.solution(Array(3, 2, -6, 3, 1)) == 5)
-  assert(Solution.solution(Array(-10)) == -10)
-  assert(Solution.solution(Array(-2, 1)) == 1)
-  assert(Solution.solution(Array(-2, 3)) == 3)
-  assert(Solution.solution(Array(-2, -2)) == -2)
+class Lesson_7_Test extends FlatSpec {
+  def check(Sut: Array[Int], Expected: Int) = {
+    s"MaxSliceSum_${Sut.deep}" should s"return expected value $Expected " in {
+      assert(Solution.solution(Sut) == Expected, println(s"${Sut.deep} should return $Expected"))
+    }
+  }
+
+  check(Array(-2, 1, 1), 2)
+  check(Array(3, 2, -6, 4, 0), 5)
+  check(Array(3, 2, -6, 3, 1),  5)
+  check(Array(-10), -10)
+  check(Array(-2, 1), 1)
+  check(Array(-2, 3), 3)
+  check(Array(-2, -2), -2)
 }

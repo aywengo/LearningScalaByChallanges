@@ -1,4 +1,14 @@
+// The statement is copyrighted by Codility inc
+//
+// Materials for the lesson:
+// https://codility.com/media/train/2-CountingElements.pdf
+//
+// Results might be found under the link:
+// https://codility.com/demo/results/trainingWAMM85-XDN/
+
 package Lesson_2.MissingInteger
+
+import org.scalatest.FlatSpec
 
 object Solution {
   def solution(A: Array[Int]): Int = {
@@ -36,10 +46,15 @@ object Solution {
 
 }
 
-object Test extends App {
-  println(Solution.solution(Array(-2147483648, 2147483647)))
-  println(Solution.solution(Array(1)))
-  println(Solution.solution(Array(2,3,1,5)))
-  println(Solution.solution(Array(-2,2,3,1,5,6,8)))
-  println(Solution.solution(Array(1, 3, 6, 4, 1, 2)))
+class Lesson_2_Test extends FlatSpec {
+  def check(Sut: Array[Int], Expected: Int) = {
+    s"MissingInteger_${Sut.deep}" should s"return expected value $Expected " in {
+      assert(Solution.solution(Sut) == Expected)
+    }
+  }
+  check(Array(-2147483648, 2147483647), 1)
+  check(Array(1), 2)
+  check(Array(2,3,1,5), 4)
+  check(Array(-2,2,3,1,5,6,8), 4)
+  check(Array(1, 3, 6, 4, 1, 2), 5)
 }
