@@ -2,6 +2,7 @@
 //
 // Materials for the lesson:
 // https://codility.com/media/train/7-MaxSlice.pdf
+// https://en.wikipedia.org/wiki/Maximum_subarray_problem
 //
 // Results might be found under link:
 // https://codility.com/demo/results/trainingPMWKGJ-WED/
@@ -16,15 +17,10 @@ object Solution {
   }
 
   def golden_max_slice(A: Array[Int]): Int = {
-    var maxEnding, maxSlice, minItem = 0
+    var maxEnding, maxSlice = A(0)
     val maxItem = A.max
-    if (maxItem < 0) {
-      minItem = A.min
-      maxEnding = minItem
-      maxSlice = minItem
-    }
-    for (a <- A) {
-      maxEnding = minItem max maxEnding + a
+    for (a <- 1 until A.length) {
+      maxEnding = A(a) max (maxEnding + A(a))
       maxSlice = maxSlice max maxEnding
     }
     maxSlice max maxItem
