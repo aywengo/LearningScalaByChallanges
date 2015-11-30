@@ -17,31 +17,25 @@ object Solution {
     val brackets, curly, square = mutable.Stack[Int]()
     val lastopen = mutable.Stack[Char]()
 
-    for (c <- S) {
-      if (c == ')') {
+    S.foreach {
+      case ')' =>
         if (brackets.isEmpty || lastopen.pop() != '(') return 0
         brackets.pop()
-      }
-      else if (c == '(') {
+      case '(' =>
         brackets.push(1)
-        lastopen.push(c)
-      }
-      else if (c == ']') {
+        lastopen.push('(')
+      case ']' =>
         if (square.isEmpty || lastopen.pop() != '[') return 0
         square.pop()
-      }
-      else if (c == '[') {
+      case '[' =>
         square.push(1)
-        lastopen.push(c)
-      }
-      else if (c == '}') {
+        lastopen.push('[')
+      case '}' =>
         if (curly.isEmpty || lastopen.pop() != '{') return 0
         curly.pop()
-      }
-      else if (c == '{') {
+      case '{' =>
         curly.push(1)
-        lastopen.push(c)
-      }
+        lastopen.push('{')
     }
     if (lastopen.isEmpty && brackets.isEmpty && square.isEmpty && curly.isEmpty) return 1
     0

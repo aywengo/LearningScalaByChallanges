@@ -18,10 +18,7 @@ object Solution {
 
   def incByIndex(A: Array[Int], R: Array[Int], N: Int, I: Int = 0, M: Int = 0, B: Int = 0): Array[Int] = {
     if (I >= A.length) {
-      for (a <- R.indices) {
-        if (R(a) < B)
-          R(a) = B
-      }
+      for (a <- R.indices if R(a) < B) R(a) = B
       return R
     }
 

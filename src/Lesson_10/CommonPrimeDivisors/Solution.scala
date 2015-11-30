@@ -57,10 +57,8 @@ class Lesson_10_Test extends FlatSpec {
     val primes = getPrimeDivisors(divisors)
 
     var count = 0
-    for (elem <- A.indices) {
-      if (checkSimilarityOfPrimeDivisorsSet(A(elem), B(elem), primes)) {
+    for (elem <- A.indices if checkSimilarityOfPrimeDivisorsSet(A(elem), B(elem), primes)) {
         count += 1
-      }
     }
     count
   }

@@ -14,18 +14,14 @@ object Solution {
   def solution(N: Int): Int = {
     var minPerimeter = Int.MaxValue
 
-    for (n <- 1 to math.sqrt(N.toDouble).toInt) {
-      if (N % n == 0) {
-        val minPerim: Int = perimeter(N, n)
-        if (minPerimeter > minPerim) minPerimeter = minPerim
-      }
+    for (n <- 1 to math.sqrt(N.toDouble).toInt if N % n == 0) {
+      val minPerim: Int = perimeter(N, n)
+      if (minPerimeter > minPerim) minPerimeter = minPerim
     }
     minPerimeter
   }
 
-  def perimeter(N: Int, A: Int): Int = {
-    2 * (A + N / A)
-  }
+  def perimeter(N: Int, A: Int): Int = 2 * (A + N / A)
 }
 
 class Lesson_7_Test extends FlatSpec {

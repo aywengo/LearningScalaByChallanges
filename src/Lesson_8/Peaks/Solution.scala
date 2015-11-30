@@ -17,23 +17,17 @@ object Solution {
     if (A.length < 3) return 0
 
     var peaks = ListBuffer[Int]()
-    for (i <- 1 until A.length - 1) {
-      if (A(i - 1) < A(i) && A(i + 1) < A(i)) peaks += i
+    for (i <- 1 until A.length - 1 if A(i - 1) < A(i) && A(i + 1) < A(i)) {
+      peaks += i
     }
 
     val n = peaks.length min (A.length - 1) / 2
-    for (i <- n to 1 by -1) {
-      if (A.length % i == 0) {
-        var a = 0
-        val chunkSize = A.length / i
-        for (p <- peaks) {
-          if (p >= a * chunkSize && p < (a + 1) * chunkSize) {
-            a += 1
-            if (a == i) {
-              return a
-            }
-          }
-        }
+    for (i <- n to 1 by -1 if A.length % i == 0) {
+      var a = 0
+      val chunkSize = A.length / i
+      for (p <- peaks if p >= a * chunkSize && p < (a + 1) * chunkSize) {
+        a += 1
+        if (a == i) return a
       }
     }
     0

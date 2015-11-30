@@ -17,8 +17,8 @@ object Solution {
     if (A.length < 3) return 0
 
     var peaks = ListBuffer[Int]()
-    for (i <- 1 until A.length - 1) {
-      if (A(i - 1) < A(i) && A(i + 1) < A(i)) peaks += i
+    for (i <- 1 until A.length - 1 if A(i - 1) < A(i) && A(i + 1) < A(i)) {
+      peaks += i
     }
 
     if (peaks.isEmpty) return 0

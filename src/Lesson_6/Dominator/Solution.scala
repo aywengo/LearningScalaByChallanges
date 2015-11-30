@@ -17,24 +17,22 @@ object Solution {
   }
 
   def goldenLeader(A: Array[Int]): Int = {
-    var size, value, count, leader = 0
-    for (k <- A.indices) {
+    var size, value, leader = 0
+    A.foreach(a => {
       if (size == 0) {
         size += 1
-        value = A(k)
+        value = a
       }
       else {
-        if (value != A(k)) size -= 1 else size += 1
+        if (value != a) size -= 1 else size += 1
       }
-    }
+    })
 
     var candidate = -1
     if (size > 0) candidate = value
     leader = -1
 
-    for (k <- A.indices) {
-      if (A(k) == candidate) count += 1
-    }
+    val count = A.count(a => a == candidate)
 
     if (count > A.length / 2) leader = candidate
 

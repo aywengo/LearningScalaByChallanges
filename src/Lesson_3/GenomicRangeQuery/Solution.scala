@@ -8,7 +8,7 @@
 
 package Lesson_3.GenomicRangeQuery
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.{Matchers, FlatSpec}
 
 import scala.util.control.Breaks._
 
@@ -41,12 +41,10 @@ object Solution {
   def aggregate(S: String): Array[Array[Int]] = {
     val result = Array.fill(3, S.length)(-1)
     val pointers = Array.ofDim[Int](3)
-    for (c <- 0 until S.length) {
+    for (c <- 0 until S.length if getGenom(S, c) < 4) {
       val x = getGenom(S, c)
-      if (x < 4) {
-        result(x - 1)(pointers(x - 1)) = c
-        pointers(x - 1) += 1
-      }
+      result(x - 1)(pointers(x - 1)) = c
+      pointers(x - 1) += 1
     }
     result
   }

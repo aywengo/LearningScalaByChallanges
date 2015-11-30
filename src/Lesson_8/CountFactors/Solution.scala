@@ -15,10 +15,8 @@ object Solution {
     var count = 0
     val sqrtOfN = math.sqrt(N.toDouble).toInt
 
-    for (n <- 1 to sqrtOfN) {
-      if (N % n == 0) {
-        if (n == sqrtOfN && n * n == N) count += 1 else count += 2
-      }
+    for (n <- 1 to sqrtOfN if N % n == 0) {
+      if (n == sqrtOfN && n * n == N) count += 1 else count += 2
     }
 
     count
