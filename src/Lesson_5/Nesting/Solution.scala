@@ -4,7 +4,7 @@
 // https://codility.com/media/train/5-Stacks.pdf
 //
 // Results might be found under link:
-// https://codility.com/demo/results/trainingT3X3RW-ETT/
+// https://codility.com/demo/results/trainingEECHC9-5RY/
 
 package Lesson_5.Nesting
 
@@ -16,20 +16,16 @@ object Solution {
   def solution(S: String): Int = {
     val stack = mutable.Stack[Int]()
 
-    for (c <- S) {
-      if (c == ')') {
+    S foreach {
+      case ')' =>
         if (stack.isEmpty) return 0
         stack.pop()
-      }
-      else {
-        stack.push(1)
-      }
+      case _ => stack.push(1)
     }
     if (stack.isEmpty) return 1
     0
   }
 }
-
 
 class Lesson_5_Test extends FlatSpec {
   def check(Sut: String, Expected: Int) = {

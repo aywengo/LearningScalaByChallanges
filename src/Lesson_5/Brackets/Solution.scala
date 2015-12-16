@@ -4,7 +4,7 @@
 // https://codility.com/media/train/5-Stacks.pdf
 //
 // Results might be found under link:
-// https://codility.com/demo/results/trainingT9U6EU-TFW/
+// https://codility.com/demo/results/training3NZZXC-WRG/
 
 package Lesson_5.Brackets
 
@@ -17,25 +17,23 @@ object Solution {
     val brackets, curly, square = mutable.Stack[Int]()
     val lastopen = mutable.Stack[Char]()
 
-    S.foreach {
-      case ')' =>
-        if (brackets.isEmpty || lastopen.pop() != '(') return 0
+    S foreach {
+      case ')' if brackets.nonEmpty && lastopen.pop() == '(' =>
         brackets.pop()
       case '(' =>
         brackets.push(1)
         lastopen.push('(')
-      case ']' =>
-        if (square.isEmpty || lastopen.pop() != '[') return 0
+      case ']' if square.nonEmpty && lastopen.pop() == '[' =>
         square.pop()
       case '[' =>
         square.push(1)
         lastopen.push('[')
-      case '}' =>
-        if (curly.isEmpty || lastopen.pop() != '{') return 0
+      case '}' if curly.nonEmpty && lastopen.pop() == '{' =>
         curly.pop()
       case '{' =>
         curly.push(1)
         lastopen.push('{')
+      case _ => return 0
     }
     if (lastopen.isEmpty && brackets.isEmpty && square.isEmpty && curly.isEmpty) return 1
     0
