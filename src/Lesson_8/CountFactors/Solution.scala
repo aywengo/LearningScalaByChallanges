@@ -23,7 +23,7 @@ object Solution {
   }
 }
 
-class Lesson_7_Test extends FlatSpec {
+class Lesson_8_Test extends FlatSpec {
   def check(Sut: Int, Expected: Int) = {
     s"CountFactors_$Sut" should s"return expected value $Expected " in {
       assert(Solution.solution(Sut) == Expected, println(s"$Sut should return $Expected"))

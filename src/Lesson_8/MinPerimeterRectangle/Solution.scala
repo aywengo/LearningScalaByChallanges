@@ -24,7 +24,7 @@ object Solution {
   def perimeter(N: Int, A: Int): Int = 2 * (A + N / A)
 }
 
-class Lesson_7_Test extends FlatSpec {
+class Lesson_8_Test extends FlatSpec {
   def check(Sut: Int, Expected: Int) = {
     s"MinPerimeterRectangle_$Sut" should s"return expected value $Expected " in {
       assert(Solution.solution(Sut) == Expected, println(s"$Sut should return $Expected"))

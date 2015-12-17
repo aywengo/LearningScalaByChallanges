@@ -49,7 +49,7 @@ object Solution {
   }
 }
 
-class Lesson_7_Test extends FlatSpec {
+class Lesson_8_Test extends FlatSpec {
   def check(Sut: Array[Int], Expected: Int) = {
     s"Peaks_${Sut.deep}" should s"return expected value $Expected " in {
       assert(Solution.solution(Sut) == Expected, println(s"${Sut.deep} should return $Expected"))
